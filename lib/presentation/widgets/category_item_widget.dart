@@ -73,7 +73,7 @@ class CategoryItemWidget extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(left: 8.0,right: 8,top: 8),
             child: Row(
               children: [
                 const Icon(
@@ -89,67 +89,71 @@ class CategoryItemWidget extends StatelessWidget {
                       color: Colors.grey.shade700, fontSize: 15),
                 ),
                 const SizedBox(
-                  width: 20,
+                  width: 12,
                 ),
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 12, right: 12),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 9.0, top: 8),
-                  child: Text(
-                    "${list[indexx].price}\$",
-                    style: customStyle.copyWith(
-                        fontSize: 17, fontWeight: FontWeight.w500),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () async {
-                    LcalDatabases().saveData(list[indexx]);
-                    toastMessage('Successfull aded to Basket');
-                  },
-                  child: SvgPicture.asset(
-                    'assets/images/korzinla.svg',
-                    fit: BoxFit.cover,
-                    height: 28,
-                    width: 30,
-                    color: Colors.black,
-                  ),
-                ),
-              ],
-            ),
-          ),
+
           Expanded(
-              child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              GestureDetector(
-                child: Container(
-                  height: 36,
-                  width: size.width / 2 - 44,
-                  margin: const EdgeInsets.symmetric(horizontal: 2),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: AllColors.primary,
-                  ),
-                  child: Text(
-                    AllText.buy,
-                    style: customStyle.copyWith(
-                      color: AllColors.primaryWhite,
-                      fontWeight: FontWeight.w500,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 12, right: 22,bottom: 7),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "${list[indexx].price}\$",
+                          style: customStyle.copyWith(
+                              fontSize: 17, fontWeight: FontWeight.w500),
+                        ),
+
+                        GestureDetector(
+                          onTap: () async {
+                            LcalDatabases().saveData(list[indexx]);
+                            toastMessage('Successfull aded to Basket');
+                          },
+                          child: SvgPicture.asset(
+                            'assets/images/korzinla.svg',
+                            fit: BoxFit.cover,
+                            height: 28,
+                            width: 30,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ),
-                onTap: () {},
-              ),
-            ],
-          )),
+                  Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                  GestureDetector(
+                    child: Container(
+                      height: 36,
+                      width: size.width / 2 - 44,
+                      margin: const EdgeInsets.symmetric(horizontal: 2),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: AllColors.primary,
+                      ),
+                      child: Text(
+                        AllText.buy,
+                        style: customStyle.copyWith(
+                          color: AllColors.primaryWhite,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                    onTap: () {},
+                  ),
+                              ],
+                            ),
+                ],
+              )),
         ],
       ),
     );
